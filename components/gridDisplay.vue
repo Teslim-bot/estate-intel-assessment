@@ -2,24 +2,38 @@
   <div>
     <br />
     <!-- {{ filteredGridData }} {{ filteredGridData.length }} -->
-    <div class="tw-inline-flex tw-justify-center tw-bg-white tw-p-5 tw-mb-10 tw-mt-5 tw-px-24">
-      <img
-        src="@/assets/shapes/circle.svg"
-        height="120px"
-        width="120px"
-        alt=""
-      />
+    <div class="tw-grid lg:tw-grid-cols-3 tw-gap-4">
+      <div
+        v-for="data in filteredGridData"
+        :key="data.id"
+        class="tw-inline-flex tw-justify-center tw-bg-white tw-lg:tw-p-4 tw-mb-5 tw-px-24"
+      >
+        <component
+          :is="resolveComponent(data.shape)"
+          :color="data.color"
+          class="tw-h-full tw-w-full tw-mx-auto"
+        />
+      </div>
     </div>
-    <img src="@/assets/shapes/oval.svg" alt="" />
-    <img src="@/assets/shapes/rectangle.svg" alt="" />
-    <img src="@/assets/shapes/square.svg" height="100px" width="200px" alt="" />
-    <img src="@/assets/shapes/triangle.svg" alt="" />
   </div>
 </template>
 
 <script>
 import gridData from "../static/gridData.json";
+import CircleShape from "./shapes/circleShape.vue";
+import ovalShape from "./shapes/ovalShape.vue";
+import rectangleShape from "./shapes/rectangleShape.vue";
+import squareShape from "./shapes/squareShape.vue";
+import triangleShape from "./shapes/triangleShape.vue";
+
 export default {
+  components: {
+    CircleShape,
+    ovalShape,
+    rectangleShape,
+    squareShape,
+    triangleShape,
+  },
   props: {
     filters: {
       type: Object,
@@ -41,6 +55,11 @@ export default {
       return gridData.filter((gridItem) => {
         return color.includes(gridItem.color) && shape.includes(gridItem.shape);
       });
+    },
+    resolveComponent() {
+      return (shape) => {
+        return `${shape}Shape`;
+      };
     },
   },
 };
