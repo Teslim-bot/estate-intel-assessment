@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2>Filters</h2>
-    <h3>shapes</h3>
+    <h1 class="tw-font-bold">Filters</h1>
+    <h3 class="tw-text-blue-500">Shapes</h3>
     <div>
       <button
         type="button"
@@ -10,14 +10,16 @@
         :value="shape"
         @click="selectShape(shape)"
         :class="[
-          isSelectedShape(shape) ? 'tw-bg-blue-100 tw-border-blue-300' : 'tw-bg-neutral-300',
-          'tw-rounded-full tw-py-2 tw-px-3 tw-mx-2 tw-border-2 tw-border-neutral-500',
+          isSelectedShape(shape)
+            ? 'tw-bg-blue-100 tw-border-blue-300'
+            : 'tw-bg-neutral-300',
+          'tw-rounded-full tw-py-1 tw-px-3 tw-mr-2 tw-mb-3 tw-border-2 tw-border-neutral-500',
         ]"
       >
         {{ humanize(shape) }}
       </button>
     </div>
-    <h3>colors</h3>
+    <h3 class="tw-text-blue-500">Colors</h3>
     <div>
       <button
         type="button"
@@ -28,7 +30,7 @@
         :class="[
           shapeColor(color),
           isSelectedColor(color) ? 'tw-border-black' : 'tw-bg-white',
-          'tw-rounded-full tw-py-3 tw-px-3 tw-mx-2 tw-border-2 ',
+          'tw-rounded-full tw-py-3 tw-px-3 tw-mr-2 tw-mb-3 tw-border-2 ',
         ]"
       />
     </div>
