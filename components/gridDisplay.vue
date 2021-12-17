@@ -1,7 +1,5 @@
 <template>
   <div>
-    <br />
-    <!-- {{ filteredGridData }} {{ filteredGridData.length }} -->
     {{ computedTitle }}
     <div class="tw-grid lg:tw-grid-cols-3 tw-gap-4">
       <div
@@ -38,7 +36,7 @@ export default {
   props: {
     filters: {
       type: Object,
-      default: () => ({ shape: [], color: [], all: true }),
+      default: () => ({ shape: [], color: [], allSelector: true }),
     },
   },
   computed: {
@@ -58,8 +56,8 @@ export default {
       });
     },
     computedTitle() {
-      const { color, shape, all, allColors, allShapes } = this.filters;
-      if (all || (color.length === 0 && shape.length === 0)) {
+      const { color, shape, allSelector, allColors, allShapes } = this.filters;
+      if (allSelector || (color.length === 0 && shape.length === 0)) {
         return "All Items:";
       } else if (allColors || allShapes) {
         if (allShapes && color.length === 1) {
@@ -71,8 +69,10 @@ export default {
       } else if (color.length === 1 && shape.length === 1) {
         return `${shape} ${color} items:`;
       } else if (color.length === 1) {
+        if (!shape.length) return `All ${color} items`;
         return `Multiple ${color} items:`;
       } else if (shape.length === 1) {
+        if (!color.length) return `All ${shape} items:`;
         return `Multiple ${shape} items:`;
       }
       return `Multiple items:`;
