@@ -1,0 +1,41 @@
+<template>
+  <svg
+    height="16"
+    id="svg2987"
+    version="1.1"
+    width="16"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:svg="http://www.w3.org/2000/svg"
+  >
+    <defs id="defs2989" />
+    <g id="layer1" transform="translate(0,-1036.3622)">
+      <rect
+        height="50"
+        id="rect2997"
+        :fill="fillColor(color)"
+        width="50"
+        x="1"
+        y="1037.3622"
+      />
+    </g>
+  </svg>
+</template>
+
+<script>
+export default {
+  props: {
+    color: {
+      type: String,
+      default: "green",
+    },
+  },
+  
+};
+</script>
+
+<style></style>
