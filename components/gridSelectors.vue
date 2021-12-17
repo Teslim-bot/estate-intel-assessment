@@ -68,11 +68,7 @@ export default {
       } else {
         this.selectedShapes.push(shape);
       }
-      console.log(this.selectedShapes, "selector");
-      this.$emit("update", {
-        shape: this.selectedShapes,
-        color: this.selectedColors,
-      });
+      this.emitFilters();
     },
     selectColor(color) {
       if (this.selectedColors.includes(color)) {
@@ -82,10 +78,27 @@ export default {
       } else {
         this.selectedColors.push(color);
       }
-      this.$emit("update", {
-        shape: this.selectedShapes,
-        color: this.selectedColors,
-      });
+      this.emitFilters();
+    },
+    emitFilters() {
+      if (
+        this.selectedColors.length === this.colors.length &&
+        this.selectedShapes.length === this.shapes.length
+      ) {
+        this.$emit("update", {
+          shape: this.selectedShapes,
+          color: this.selectedColors,
+          all: true,
+        });
+      } else {
+        this.$emit("update", {
+          shape: this.selectedShapes,
+          color: this.selectedColors,
+          all: false,
+          allColors: this.selectedColors.length === this.colors.length,
+          allShapes: this.selectedShapes.length === this.shapes.length,
+        });
+      }
     },
   },
 };

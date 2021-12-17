@@ -2,6 +2,7 @@
   <div>
     <br />
     <!-- {{ filteredGridData }} {{ filteredGridData.length }} -->
+    {{ computedTitle }}
     <div class="tw-grid lg:tw-grid-cols-3 tw-gap-4">
       <div
         v-for="data in filteredGridData"
@@ -37,7 +38,7 @@ export default {
   props: {
     filters: {
       type: Object,
-      default: () => ({ shape: [], color: [] }),
+      default: () => ({ shape: [], color: [], all: true }),
     },
   },
   computed: {
@@ -55,6 +56,26 @@ export default {
       return gridData.filter((gridItem) => {
         return color.includes(gridItem.color) && shape.includes(gridItem.shape);
       });
+    },
+    computedTitle() {
+      const { color, shape, all, allColors, allShapes } = this.filters;
+      if (all || (color.length === 0 && shape.length === 0)) {
+        return "All Items:";
+      } else if (allColors || allShapes) {
+        if (allShapes && color.length === 1) {
+          return `All ${color} items:`;
+        } else if (allColors && shape.length === 1) {
+          return `All ${shape} items:`;
+        }
+        return `Multiple items:`;
+      } else if (color.length === 1 && shape.length === 1) {
+        return `${shape} ${color} items:`;
+      } else if (color.length === 1) {
+        return `Multiple ${color} items:`;
+      } else if (shape.length === 1) {
+        return `Multiple ${shape} items:`;
+      }
+      return `Multiple items:`;
     },
     resolveComponent() {
       return (shape) => {

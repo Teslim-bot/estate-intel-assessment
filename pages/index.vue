@@ -1,6 +1,6 @@
 <template>
   <div
-    class="tw-container tw-mx-auto tw-py-4 tw-bg-neutral-300 tw-px-44 tw-mt-5"
+    class="tw-container tw-mx-auto tw-py-4 tw-bg-neutral-300 tw-px-7 lg:tw-px-44 tw-mt-5"
   >
     <grid-selectors @update="updateQuery" />
     <grid-display :filters="filters" />
@@ -18,6 +18,7 @@ export default {
       filters: {
         color: [],
         shape: [],
+        all: true,
       },
     };
   },
