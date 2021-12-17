@@ -1,28 +1,23 @@
 <template>
+  <!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
   <svg
-    height="16"
-    id="svg2987"
     version="1.1"
-    width="16"
+    id="Layer_1"
     xmlns="http://www.w3.org/2000/svg"
-    xmlns:cc="http://creativecommons.org/ns#"
-    xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    x="0px"
+    y="0px"
+    width="15px"
+    height="15px"
+    viewBox="0 0 15 15"
+    style="enable-background: new 0 0 15 15"
+    xml:space="preserve"
   >
-    <defs id="defs2989" />
-    <g id="layer1" transform="translate(0,-1036.3622)">
-      <rect
-        height="50"
-        id="rect2997"
-        :fill="fillColor(color)"
-        width="50"
-        x="1"
-        y="1037.3622"
-      />
-    </g>
+    <path
+      :fill="fillColor(color)"
+      d="M12.7,2.3v10.4H2.3V2.3H12.7 M13,1H2C1.4477,1,1,1.4477,1,2v11c0,0.5523,0.4477,1,1,1h11c0.5523,0,1-0.4477,1-1V2
+	C14,1.4477,13.5523,1,13,1L13,1z"
+    />
   </svg>
 </template>
 
@@ -34,7 +29,6 @@ export default {
       default: "green",
     },
   },
-  
 };
 </script>
 
