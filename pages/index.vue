@@ -1,9 +1,7 @@
 <template>
   <div class="tw-container tw-mx-auto">
     <app-header class="tw-px-14" />
-    <div
-      class="tw-py-4 tw-bg-neutral-300 tw-px-7 lg:tw-px-44 tw-mt-5"
-    >
+    <div class="tw-py-4 tw-bg-neutral-300 tw-px-7 lg:tw-px-44 tw-mt-5">
       <grid-selectors @update="updateQuery" />
       <grid-display :filters="filters" />
     </div>
@@ -30,6 +28,16 @@ export default {
     updateQuery(filters) {
       this.filters = filters;
     },
+  },
+  beforeRouteEnter(to, from, next) {
+    console.log("haka");
+    next((vm) => {
+      if (vm.$store.getters.isLoggedIn) {
+        next();
+      } else {
+        next("/login");
+      }
+    });
   },
 };
 </script>
