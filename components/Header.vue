@@ -3,12 +3,19 @@
     <div>
       <span>SHAPES</span>
     </div>
-    <button class="tw-text-red-500">Logout</button>
+    <button @click="logOut()" class="tw-text-red-500">Logout</button>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    logOut() {
+      this.$store.commit("logOut");
+      this.$router.push("/login");
+    },
+  },
+};
 </script>
 
 <style></style>
