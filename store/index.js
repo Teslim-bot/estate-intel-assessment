@@ -27,17 +27,15 @@ export const actions = {
 
 export const mutations = {
   setLoggedIn(state, payload) {
-    window.localStorage.setItem("isLoggedIn", true);
     state.isLoggedIn = payload;
   },
   logOut(state) {
-    window.localStorage.removeItem("isLoggedIn");
     state.isLoggedIn = false;
   },
 };
 
 export const getters = {
   isLoggedIn(state) {
-    return window.localStorage.getItem("isLoggedIn") || state.isLoggedIn;
+    return state.isLoggedIn;
   },
 };
