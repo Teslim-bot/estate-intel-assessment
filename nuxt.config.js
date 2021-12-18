@@ -42,4 +42,7 @@ export default {
       },
     },
   },
+  router: {
+    middleware: ["route-guard"],
+  },
 };
