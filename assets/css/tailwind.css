@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  input {
+    @apply tw-p-2.5 tw-w-full tw-border tw-rounded-md tw-text-black tw-border-gray-400 focus:tw-border-gray-600 focus:tw-outline-none;
+  }
+  h3 {
+    @apply tw-text-blue-500;
+  }
+}
+
+@layer components {
+  .selector-btn {
+    @apply tw-px-3 tw-mr-2 tw-mb-3 tw-border-2 tw-rounded-full;
+  }
+  .submit-btn {
+    @apply tw-rounded tw-py-2 tw-px-8 tw-border tw-w-full tw-bg-neutral-200 hover:tw-bg-neutral-700 hover:tw-text-neutral-200;
+  }
+}

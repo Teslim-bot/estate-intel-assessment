@@ -1,7 +1,12 @@
 <template>
   <div>
-    {{ computedTitle }}
-    <div class="tw-grid lg:tw-grid-cols-3 tw-gap-4">
+    <p id="grid-title">
+      {{ computedTitle }}
+    </p>
+    <div
+      class="tw-grid lg:tw-grid-cols-3 tw-gap-4"
+      v-if="filteredGridData.length > 0"
+    >
       <div
         v-for="data in filteredGridData"
         :key="data.id"
@@ -14,6 +19,7 @@
         />
       </div>
     </div>
+    <p v-else>No item matched the filter</p>
   </div>
 </template>
 
@@ -58,7 +64,7 @@ export default {
     computedTitle() {
       const { color, shape, allSelector, allColors, allShapes } = this.filters;
       if (allSelector || (color.length === 0 && shape.length === 0)) {
-        return "All Items:";
+        return "All items:";
       } else if (allColors || allShapes) {
         if (allShapes && color.length === 1) {
           return `All ${color} items:`;
@@ -69,7 +75,7 @@ export default {
       } else if (color.length === 1 && shape.length === 1) {
         return `${shape} ${color} items:`;
       } else if (color.length === 1) {
-        if (!shape.length) return `All ${color} items`;
+        if (!shape.length) return `All ${color} items:`;
         return `Multiple ${color} items:`;
       } else if (shape.length === 1) {
         if (!color.length) return `All ${shape} items:`;

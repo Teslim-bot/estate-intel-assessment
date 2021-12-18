@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="tw-font-bold">Filters</h1>
-    <h3 class="tw-text-blue-500">Shapes</h3>
+    <h3>Shapes</h3>
     <div>
       <button
         type="button"
@@ -13,13 +13,14 @@
           isSelectedShape(shape)
             ? 'tw-bg-blue-100 tw-border-blue-300'
             : 'tw-bg-neutral-300',
-          'tw-rounded-full tw-py-1 tw-px-3 tw-mr-2 tw-mb-3 tw-border-2 tw-border-neutral-500',
+            'selector-btn',
+          'tw-py-1 tw-border-neutral-500',
         ]"
       >
         {{ humanize(shape) }}
       </button>
     </div>
-    <h3 class="tw-text-blue-500">Colors</h3>
+    <h3>Colors</h3>
     <div>
       <button
         type="button"
@@ -30,7 +31,8 @@
         :class="[
           shapeColor(color),
           isSelectedColor(color) ? 'tw-border-black' : 'tw-bg-white',
-          'tw-rounded-full tw-py-3 tw-px-3 tw-mr-2 tw-mb-3 tw-border-2 ',
+          'selector-btn',
+          'tw-py-3 ',
         ]"
       />
     </div>
@@ -83,24 +85,18 @@ export default {
       this.emitFilters();
     },
     emitFilters() {
-      if (
-        this.selectedColors.length === this.colors.length &&
-        this.selectedShapes.length === this.shapes.length
-      ) {
-        this.$emit("update", {
-          shape: this.selectedShapes,
-          color: this.selectedColors,
-          all: true,
-        });
-      } else {
-        this.$emit("update", {
-          shape: this.selectedShapes,
-          color: this.selectedColors,
-          all: false,
-          allColors: this.selectedColors.length === this.colors.length,
-          allShapes: this.selectedShapes.length === this.shapes.length,
-        });
+      const dataToEmit = {
+        shape: this.selectedShapes,
+        color: this.selectedColors,
+        allSelector: true,
+      };
+      if (!(this.selectedColors.length === this.colors.length &&
+        this.selectedShapes.length === this.shapes.length)) {
+        dataToEmit.allSelector = false;
+        dataToEmit.allColors = this.selectedColors.length === this.colors.length;
+        dataToEmit.allShapes = this.selectedShapes.length === this.shapes.length;
       }
+      this.$emit("update", dataToEmit);
     },
   },
 };
