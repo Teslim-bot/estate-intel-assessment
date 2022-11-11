@@ -10,11 +10,12 @@
       <div
         v-for="data in filteredGridData"
         :key="data.id"
-        class="tw-inline-flex tw-justify-center tw-bg-white tw-lg:tw-p-4 tw-mb-5 tw-px-24"
+        class="tw-inline-flex tw-justify-center tw-bg-white tw-lg:tw-p-4 tw-mb-5 tw-px-12"
       >
         <component
           :is="resolveComponent(data.shape)"
           :color="data.color"
+          :src="data.img"
           class="tw-h-full tw-w-full tw-mx-auto"
         />
       </div>
@@ -24,7 +25,7 @@
 </template>
 
 <script>
-import gridData from "../static/gridData.json";
+import db from "../static/db.json";
 import CircleShape from "./shapes/circleShape.vue";
 import ovalShape from "./shapes/ovalShape.vue";
 import rectangleShape from "./shapes/rectangleShape.vue";
@@ -49,15 +50,15 @@ export default {
     filteredGridData() {
       const { color, shape } = this.filters;
       if (color.length === 0 && shape.length === 0) {
-        return gridData;
+        return db;
       }
       if (color.length === 0) {
-        return gridData.filter((grid) => shape.includes(grid.shape));
+        return db.filter((grid) => shape.includes(grid.shape));
       }
       if (shape.length === 0) {
-        return gridData.filter((grid) => color.includes(grid.color));
+        return db.filter((grid) => color.includes(grid.color));
       }
-      return gridData.filter((gridItem) => {
+      return db.filter((gridItem) => {
         return color.includes(gridItem.color) && shape.includes(gridItem.shape);
       });
     },

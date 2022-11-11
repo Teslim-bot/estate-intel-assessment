@@ -13,7 +13,7 @@
           isSelectedShape(shape)
             ? 'tw-bg-blue-100 tw-border-blue-300'
             : 'tw-bg-neutral-300',
-            'selector-btn',
+          'selector-btn',
           'tw-py-1 tw-border-neutral-500',
         ]"
       >
@@ -44,7 +44,7 @@ export default {
   data() {
     return {
       shapes: ["oval", "circle", "triangle", "square", "rectangle"],
-      colors: ["red", "green", "blue", "yellow", "slate", "cyan"],
+      colors: ["red", "green", "blue", "yellow", "purple", "gray"],
       selectedShapes: [],
       selectedColors: [],
     };
@@ -90,11 +90,17 @@ export default {
         color: this.selectedColors,
         allSelector: true,
       };
-      if (!(this.selectedColors.length === this.colors.length &&
-        this.selectedShapes.length === this.shapes.length)) {
+      if (
+        !(
+          this.selectedColors.length === this.colors.length &&
+          this.selectedShapes.length === this.shapes.length
+        )
+      ) {
         dataToEmit.allSelector = false;
-        dataToEmit.allColors = this.selectedColors.length === this.colors.length;
-        dataToEmit.allShapes = this.selectedShapes.length === this.shapes.length;
+        dataToEmit.allColors =
+          this.selectedColors.length === this.colors.length;
+        dataToEmit.allShapes =
+          this.selectedShapes.length === this.shapes.length;
       }
       this.$emit("update", dataToEmit);
     },
